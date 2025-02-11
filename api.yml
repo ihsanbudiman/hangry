@@ -1,0 +1,497 @@
+# This is the OpenAPI specification for your service. It is used to generate the client code.
+# To generate the server code, use the Gradle task `openApiGenerate`. The 
+# generated code will be placed in `build/generate-resources/main`.
+#
+# We will evaluate you based on how well you design your API.
+# 1. How well it follows REST principles.
+# 2. How easy it is to understand and use.
+#
+# References
+# 1. https://swagger.io/specification/
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: User Service
+  license:
+    name: MIT
+servers:
+  - url: http://localhost
+paths:
+  /health:
+    get:
+      summary: Check the health of the service
+      responses:
+        '200':
+          description: Service is healthy
+        '503':
+          description: Service is unhealthy
+  /add-cart:
+    post:
+      summary: Add a product to the cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCartRequest'
+      responses:
+        '200':
+          description: Product added to cart
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Something was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /remove-from-cart:
+    post:
+      summary: Remove a product from the cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveFromCartRequest'
+      responses:
+        '200':
+          description: Product removed from cart
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400': 
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /promo:
+    post:
+      summary: Create a promo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePromoRequest'
+      responses:
+        '200':
+          description: Promo created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePromoResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /promo/{id}/extend:
+    post:
+      summary: Extend the promo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Promo ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtendPromoRequest'
+      responses:
+        '200':
+          description: Promo extended
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Promo not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /get-promo:
+    get:
+      summary: Get promos
+      parameters:
+        - in: query
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: User ID
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+          description: Page number
+        - in: query
+          name: perPage
+          required: false
+          schema:
+            type: integer
+          description: Number of items per page
+      responses:
+        '200':
+          description: Promos fetched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromoResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /order:
+    post:
+      summary: Place an order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOrderRequest'
+      responses:
+        '200':
+          description: Order placed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+
+    Promo:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - segmentation
+        - type
+        - startDate
+        - endDate
+        - maxUsageLimit
+        - cities
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Summer Sale"
+        description:
+          type: string
+          example: "20% off on all products for the summer season."
+        segmentation:
+          type: string
+          enum: ["ALL", "LOYAL_USER", "NEW_USER", "CITY"]
+          example: "ALL"
+        type:
+          type: string
+          enum: ["PERCENTAGE_DISCOUNT", "BUY_X_GET_Y_FREE"]
+          example: "PERCENTAGE_DISCOUNT"
+        minOrderAmount:
+          type: number
+          format: float
+          example: 100.00
+        discountValue:
+          type: number
+          format: float
+          example: 20.00
+        maxDiscountAmount:
+          type: number
+          format: float
+          example: 50.00
+        buyProductId:
+          type: integer
+          example: 1
+        freeProductId:
+          type: integer
+          example: 2
+        buyItemCount:
+          type: integer
+          example: 2
+        freeItemCount:
+          type: integer
+          example: 1
+        startDate:
+          type: string
+          format: date-time
+          example: "2023-06-01T00:00:00Z"
+        endDate:
+          type: string
+          format: date-time
+          example: "2023-06-30T23:59:59Z"
+        maxUsageLimit:
+          type: integer
+          example: 100
+        cities:
+          type: array
+          items:
+            type: string
+          example: ["New York", "Los Angeles"]
+    
+    Meta:
+      type: object
+      required:
+        - total
+        - page
+        - per_page
+        - limit
+      properties:
+        total:
+          type: integer
+          example: 100
+        page:
+          type: integer
+          example: 1
+        per_page:
+          type: integer
+          example: 10
+        limit:
+          type: integer
+          example: 10
+    SuccessResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: Success
+        data:
+          type: object
+          nullable: true
+    HelloResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: Hello, World!
+    ErrorResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+        data:
+          type: object
+    AddCartRequest:
+      type: object
+      required:
+        - userId
+        - productId
+        - quantity
+      properties:
+        userId:
+          type: integer
+          example: 1
+        productId:
+          type: integer
+          example: 1
+        quantity:
+          type: integer
+          example: 1
+    RemoveFromCartRequest:
+      type: object
+      required:
+        - userId
+        - productId
+      properties:
+        userId:
+          type: integer
+          example: 1
+        productId:
+          type: integer
+          example: 1
+    CreatePromoRequest:
+      type: object
+      required:
+        - name
+        - segmentation
+        - type
+        - startDate
+        - endDate
+      properties:
+        name:
+          type: string
+          example: "Summer Sale"
+        description:
+          type: string
+          example: "20% off on all products for the summer season."
+        segmentation:
+          type: string
+          enum: ["ALL", "LOYAL_USER", "NEW_USER", "CITY"]
+          example: "ALL"
+        type:
+          type: string
+          enum: ["PERCENTAGE_DISCOUNT", "BUY_X_GET_Y_FREE"]
+          example: "PERCENTAGE_DISCOUNT"
+        minOrderAmount:
+          type: number
+          format: float
+          example: 100.00
+        discountValue:
+          type: number
+          format: float
+          example: 20.00
+        maxDiscountAmount:
+          type: number
+          format: float
+          example: 50.00
+        buyProductId:
+          type: integer
+          example: 1
+        freeProductId:
+          type: integer
+          example: 2
+        buyItemCount:
+          type: integer
+          example: 2
+        freeItemCount:
+          type: integer
+          example: 1
+        startDate:
+          type: string
+          format: date-time
+          example: "2023-06-01T00:00:00Z"
+        endDate:
+          type: string
+          format: date-time
+          example: "2023-06-30T23:59:59Z"
+        maxUsageLimit:
+          type: integer
+          example: 100
+        cities:
+          type: array
+          items:
+            type: string
+          example: ["New York", "Los Angeles"]
+    CreatePromoResponse:
+      type: object
+      required:
+        - message
+        - data
+      properties:
+        message:
+          type: string
+          example: "Promo created successfully"
+        data:
+          type: object
+          properties:
+            promoId:
+              type: integer
+              example: 1
+    ExtendPromoRequest:
+      type: object
+      required:
+        - startDate
+        - endDate
+      properties:
+        startDate:
+          type: string
+          format: date-time
+          example: "2023-06-01T00:00:00Z"
+        endDate:
+          type: string
+          format: date-time
+          example: "2023-06-30T23:59:59Z"
+    GetPromoResponse:
+      type: object
+      required:
+        - promos
+        - meta
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Promo'
+        message:
+          type: string
+          example: "Promos fetched successfully"
+    PostOrderRequest:
+      type: object
+      required:
+        - userId
+      properties:
+        userId:
+          type: integer
+          example: 1
+        promoIds:
+          type: array
+          items:
+            type: integer
