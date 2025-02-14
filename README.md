@@ -38,8 +38,16 @@ To run this project, you need to have the following installed:
    - Once the cart is ready and a promo is created, you can fetch a list of eligible promos.
 
 4. **Place Order**
-   - You can redeem an order after adding items to the cart. Multiple promos can be used.
-   - After four orders, the user is marked as a loyal user.
+   - You can place an order after adding items to the cart. Multiple promos can be applied.  
+   - After four orders, a user is classified as a loyal user.  
+   - There are two types of promos:  
+     - **Buy X Get Y**: This promo can be redeemed if the user meets the required minimum product order. For example, buying at least three of item X grants an additional quantity of item Y.  
+     - **Percentage Discount**: This promo can be redeemed if the user meets the minimum order amount specified in the promo.  
+   - There are four promo categories:  
+     - **All:** Available to all customers who meet the criteria.  
+     - **City:** Applicable only to users in a specific city.  
+     - **Loyal User:** Available exclusively to users classified as loyal.  
+     - **New User:** Can be redeemed by newly registered users within their first month. After one month, this promo is no longer available.  
 
 ---
 
