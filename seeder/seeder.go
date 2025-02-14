@@ -133,10 +133,6 @@ func SeedPromos(db *gorm.DB) error {
 			EndDate:           time.Now().AddDate(0, 1, 0),
 			MaxUsageLimit:     &limit,
 			CurrentUsageCount: 0,
-			PromoCities: []models.PromoCity{
-				{City: "Jakarta"},
-				{City: "Bandung"},
-			},
 		},
 		// Promo Percentage But for New User
 		{

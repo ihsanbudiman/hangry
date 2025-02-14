@@ -1,0 +1,633 @@
+{
+	"info": {
+		"_postman_id": "a22e0fc5-4673-46e8-9ccb-807e5362fb74",
+		"name": "Hangry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25631957"
+	},
+	"item": [
+		{
+			"name": "Add Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 1,\n    \"quantity\": 20,\n    \"userId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/add-cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"add-cart"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Cart",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 2,\n    \"quantity\": 20,\n    \"userId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/add-cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"add-cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:27:34 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "34"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": null,\n    \"message\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove from cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 2,\n    \"userId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/remove-from-cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"remove-from-cart"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Remove from cart",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 2,\n    \"userId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/remove-from-cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"remove-from-cart"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:27:46 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "34"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": null,\n    \"message\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "create promo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n  \"description\": \"15% Discount Promo Bandung & Jakarta\",\n  \"endDate\": \"2025-12-31T23:59:59Z\",\n  \"maxUsageLimit\": 100,\n  \"name\": \"15% Discount Promo Bandung & Jakarta\",\n  \"segmentation\": \"CITY\",\n  \"startDate\": \"2025-01-01T00:00:00Z\",\n  \"type\": \"PERCENTAGE_DISCOUNT\",\n  \"discountValue\": 10,\n  \"minOrderAmount\": 0,\n  \"maxDiscountAmount\": 0,\n  \"cities\": [\"Bandung\", \"Jakarta\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/promo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"promo"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "percentage discount & loyal user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"description\": \"15% Discount Promo\",\n  \"endDate\": \"2025-12-31T23:59:59Z\",\n  \"maxUsageLimit\": 100,\n  \"name\": \"15% Discount Promo\",\n  \"segmentation\": \"LOYAL_USER\",\n  \"startDate\": \"2025-01-01T00:00:00Z\",\n  \"type\": \"PERCENTAGE_DISCOUNT\",\n  \"discountValue\": 10,\n  \"minOrderAmount\": 0,\n  \"maxDiscountAmount\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/promo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"promo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:28:08 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"promo created\",\n    \"data\": {\n        \"promoId\": 20\n    }\n}"
+				},
+				{
+					"name": "percentage discount & specific cities",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"description\": \"15% Discount Promo Bandung & Jakarta\",\n  \"endDate\": \"2025-12-31T23:59:59Z\",\n  \"maxUsageLimit\": 100,\n  \"name\": \"15% Discount Promo Bandung & Jakarta\",\n  \"segmentation\": \"CITY\",\n  \"startDate\": \"2025-01-01T00:00:00Z\",\n  \"type\": \"PERCENTAGE_DISCOUNT\",\n  \"discountValue\": 10,\n  \"minOrderAmount\": 0,\n  \"maxDiscountAmount\": 0,\n  \"cities\": [\"Bandung\", \"Jakarta\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/promo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"promo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:29:20 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"promo created\",\n    \"data\": {\n        \"promoId\": 21\n    }\n}"
+				},
+				{
+					"name": "buyxfreey & all",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"buyItemCount\": 3,\n  \"buyProductId\": 1,\n  \"description\": \"Buy 3 get 1 free promotion\",\n  \"endDate\": \"2025-12-31T23:59:59Z\",\n  \"freeItemCount\": 1,\n  \"freeProductId\": 1,\n  \"maxUsageLimit\": 100,\n  \"name\": \"Holiday Buy X Get Y Free\",\n  \"segmentation\": \"ALL\",\n  \"startDate\": \"2025-11-01T00:00:00Z\",\n  \"type\": \"BUY_X_GET_Y_FREE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/promo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"promo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:29:51 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"promo created\",\n    \"data\": {\n        \"promoId\": 22\n    }\n}"
+				},
+				{
+					"name": "buyxfreey & new user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"buyItemCount\": 3,\n  \"buyProductId\": 1,\n  \"description\": \"Buy 3 get 1 free promotion\",\n  \"endDate\": \"2025-12-31T23:59:59Z\",\n  \"freeItemCount\": 1,\n  \"freeProductId\": 1,\n  \"maxUsageLimit\": 100,\n  \"name\": \"Holiday Buy X Get Y Free\",\n  \"segmentation\": \"NEW_USER\",\n  \"startDate\": \"2025-01-01T00:00:00Z\",\n  \"type\": \"BUY_X_GET_Y_FREE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/promo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"promo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:30:19 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"promo created\",\n    \"data\": {\n        \"promoId\": 23\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Extend Promo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"startDate\": \"2025-01-01T00:00:00Z\",\n  \"endDate\": \"2025-12-31T23:59:59Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/promo/{promoId}/extend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"promo",
+						"{promoId}",
+						"extend"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Extend Promo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"startDate\": \"2025-01-01T00:00:00Z\",\n  \"endDate\": \"2025-12-31T23:59:59Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/promo/23/extend",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"promo",
+								"23",
+								"extend"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:31:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"promo extended\"\n}"
+				}
+			]
+		},
+		{
+			"name": "get Promo list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/get-promo?userId=1&page=1&perPage=15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"get-promo"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "perPage",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get Promo list",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/get-promo?userId=1&page=1&perPage=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"get-promo"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perPage",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:31:45 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"promo list\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Test Promo Percentage Discount\",\n            \"description\": \"Get a percentage off your order\",\n            \"segmentation\": \"CITY\",\n            \"type\": \"PERCENTAGE_DISCOUNT\",\n            \"min_order_amount\": 50000,\n            \"discount_value\": 15,\n            \"max_discount_amount\": 10000,\n            \"buy_product_id\": null,\n            \"free_product_id\": null,\n            \"buy_product_qty\": 0,\n            \"free_product_qty\": 0,\n            \"start_date\": \"2025-02-09T08:35:13.382642Z\",\n            \"end_date\": \"2025-03-09T08:35:13.382642Z\",\n            \"max_usage_limit\": 100,\n            \"current_usage_count\": 1,\n            \"created_at\": \"2025-02-09T08:35:13.367569Z\",\n            \"updated_at\": \"2025-02-11T04:39:07.345314Z\",\n            \"promo_cities\": null,\n            \"order_promos\": null\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Test Promo New User Discount\",\n            \"description\": \"Get 20% discount for new users\",\n            \"segmentation\": \"NEW_USER\",\n            \"type\": \"PERCENTAGE_DISCOUNT\",\n            \"min_order_amount\": 0,\n            \"discount_value\": 20,\n            \"max_discount_amount\": 20000,\n            \"buy_product_id\": null,\n            \"free_product_id\": null,\n            \"buy_product_qty\": 0,\n            \"free_product_qty\": 0,\n            \"start_date\": \"2025-02-09T08:35:13.382642Z\",\n            \"end_date\": \"2025-03-09T08:35:13.382Z\",\n            \"max_usage_limit\": 100,\n            \"current_usage_count\": 0,\n            \"created_at\": \"2025-02-09T08:35:13.367569Z\",\n            \"updated_at\": \"2025-02-09T08:35:13.367569Z\",\n            \"promo_cities\": null,\n            \"order_promos\": null\n        },\n        {\n            \"id\": 10,\n            \"name\": \"10% Discount Promo Jakarta & Bandung\",\n            \"description\": \"10% Discount Promo Jakarta & Bandung\",\n            \"segmentation\": \"CITY\",\n            \"type\": \"PERCENTAGE_DISCOUNT\",\n            \"min_order_amount\": 0,\n            \"discount_value\": 10,\n            \"max_discount_amount\": 0,\n            \"buy_product_id\": null,\n            \"free_product_id\": null,\n            \"buy_product_qty\": 0,\n            \"free_product_qty\": 0,\n            \"start_date\": \"2025-01-01T00:00:00Z\",\n            \"end_date\": \"2025-12-31T23:59:59Z\",\n            \"max_usage_limit\": 100,\n            \"current_usage_count\": 0,\n            \"created_at\": \"2025-02-10T04:29:17.688381Z\",\n            \"updated_at\": \"2025-02-10T04:29:17.688381Z\",\n            \"promo_cities\": null,\n            \"order_promos\": null\n        },\n        {\n            \"id\": 21,\n            \"name\": \"15% Discount Promo Bandung & Jakarta\",\n            \"description\": \"15% Discount Promo Bandung & Jakarta\",\n            \"segmentation\": \"CITY\",\n            \"type\": \"PERCENTAGE_DISCOUNT\",\n            \"min_order_amount\": 0,\n            \"discount_value\": 10,\n            \"max_discount_amount\": 0,\n            \"buy_product_id\": null,\n            \"free_product_id\": null,\n            \"buy_product_qty\": 0,\n            \"free_product_qty\": 0,\n            \"start_date\": \"2025-01-01T00:00:00Z\",\n            \"end_date\": \"2025-12-31T23:59:59Z\",\n            \"max_usage_limit\": 100,\n            \"current_usage_count\": 0,\n            \"created_at\": \"2025-02-14T11:29:20.705869Z\",\n            \"updated_at\": \"2025-02-14T11:29:20.705869Z\",\n            \"promo_cities\": null,\n            \"order_promos\": null\n        }\n    ],\n    \"meta\": {\n        \"page\": 1,\n        \"perPage\": 15,\n        \"total\": 4,\n        \"totalPage\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 1,\n  \"promoIds\": [1]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "place order",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": 1,\n  \"promoIds\": [2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1323/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1323",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 14 Feb 2025 11:32:37 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Order placed successfully\"\n}"
+				}
+			]
+		}
+	]
+}
