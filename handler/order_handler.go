@@ -53,5 +53,7 @@ func (s *Server) PostOrder(ctx echo.Context) error {
 		return ResponseError(ctx, err)
 	}
 
-	return ctx.NoContent(http.StatusOK)
+	return ctx.JSON(http.StatusCreated, echo.Map{
+		"message": "Order placed successfully",
+	})
 }

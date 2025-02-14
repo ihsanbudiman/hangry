@@ -43,7 +43,7 @@ func (o *orderUsecase) CreateOrder(ctx context.Context, dto dto.OrderInput) erro
 
 		// get promo
 		var promos []models.Promo
-		if dto.PromoIds != nil && len(dto.PromoIds) > 0 {
+		if len(dto.PromoIds) > 0 {
 			// check if promo still valid
 			isAvailable := true
 			promos, _, err = o.promoRepository.GetPromoByUserCart(ctx, tx, repository.GetPromoByUserCartInput{

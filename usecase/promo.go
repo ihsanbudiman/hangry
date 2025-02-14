@@ -70,7 +70,7 @@ func (p *promoUsecase) ExtendPromo(ctx context.Context, dto dto.ExtendPromoInput
 		}
 
 		// check if dto.EndDate is less than promo.EndDate
-		if dto.EndDate.Before(promo.EndDate) && dto.EndDate.Before(time.Now()) {
+		if dto.EndDate.Before(promo.EndDate) || dto.EndDate.Before(time.Now()) {
 			return utils.NewCustomError("new end date must be greater than current end date", nil, http.StatusBadRequest)
 		}
 
@@ -91,7 +91,7 @@ func (p *promoUsecase) CreatePromo(ctx context.Context, dto dto.CreatePromoInput
 	err := p.transactionRepository.Execute(ctx, func(tx *gorm.DB) error {
 		if dto.Type == string(constants.PROMOTYPEBUYXGETY) {
 			// check buy product id
-			product, err := p.productRepository.Get(ctx, nil, uint(*dto.BuyProductId))
+			product, err := p.productRepository.Get(ctx, tx, uint(*dto.BuyProductId))
 			if err != nil {
 				return utils.NewCustomError(err.Error(), nil, http.StatusInternalServerError)
 			}
@@ -100,7 +100,7 @@ func (p *promoUsecase) CreatePromo(ctx context.Context, dto dto.CreatePromoInput
 			}
 
 			// check free product id
-			product, err = p.productRepository.Get(ctx, nil, uint(*dto.FreeProductId))
+			product, err = p.productRepository.Get(ctx, tx, uint(*dto.FreeProductId))
 			if err != nil {
 				return utils.NewCustomError(err.Error(), nil, http.StatusInternalServerError)
 			}

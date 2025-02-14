@@ -25,7 +25,6 @@ type CreatePromoInput struct {
 
 func (c *CreatePromoInput) CreatePromoModel() models.Promo {
 	promo := models.Promo{
-
 		Name:              c.Name,
 		Segmentation:      c.Segmentation,
 		Type:              c.Type,

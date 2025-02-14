@@ -11,10 +11,12 @@ type NewDBConnOptions struct {
 	Dsn string
 }
 
-func NewDBConn(opts NewDBConnOptions) *gorm.DB {
-	db, err := gorm.Open(postgres.Open(opts.Dsn), &gorm.Config{
+func NewDBConn(options NewDBConnOptions) *gorm.DB {
+	config := &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
-	})
+	}
+
+	db, err := gorm.Open(postgres.Open(options.Dsn), config)
 	if err != nil {
 		panic(err)
 	}
